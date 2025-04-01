@@ -6,9 +6,11 @@
     <title>Personal Portfolio</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/script.js" defer></script>
+    <!-- Added Google Fonts for Poppins (used in your CSS) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <!-- Header with Navigation -->
     <header>
         <nav>
             <ul>
@@ -17,15 +19,66 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <!-- Theme toggle button for switching between light and dark modes -->
             <button id="theme-toggle">🌙</button>
         </nav>
     </header>
 
+    <!-- Home Section -->
     <section id="home" class="hero">
         <h1 class="animated-text">Hi, I'm <span>Prateek Kumar</span></h1>
         <p>Passionate Web Developer | Designer | Creator</p>
-        <a href="projects.html" class="cta-button">View My Work</a>
+        <!-- Updated CTA button to link to projects section within the same page -->
+        <a href="#projects" class="cta-button">View My Work</a>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h1>About Me</h1>
+        <!-- Updated content with details from your resume -->
+        <p>I'm a dynamic and innovative Web Developer with a solid foundation in HTML, CSS, JavaScript, and Java. I have hands-on experience in freelance web development, delivering professional and user-friendly websites for small businesses and startups. I’m committed to enhancing user experience and providing effective solutions.</p>
+        <h2>Education</h2>
+        <p><strong>Ranchi University, 2019</strong><br>Bachelor of Computer Application, GPA: 7.0</p>
+        <p><strong>Ducat India Institute, Delhi, 2023</strong><br>Certification Course Of Java Full Stack</p>
+        <h2>Skills</h2>
+        <p>Web Development (HTML, CSS, JavaScript, Java), Responsive Design, User Experience, Frontend Development Frameworks, Website Maintenance & Optimization, Cross-browser Compatibility, Client Communication, Problem Solving, and Eye for Detail.</p>
+        <!-- Added resume download link as per project requirements -->
+        <h2>Resume</h2>
+        <p><a href="/resume.pdf" target="_blank" class="cta-button">Download My Resume</a></p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h1>My Projects</h1>
+        <div class="projects-container">
+            <!-- Updated project details from your resume -->
+            <div class="project-card">
+                <h2>Smart Site Maker (2024 - Present)</h2>
+                <p>Created a professional and user-friendly website for a digital agency using HTML, CSS, and JavaScript. Designed the layout, implemented frontend technologies, and ensured optimal functionality, resulting in improved client engagement and conversion rates.</p>
+            </div>
+            <div class="project-card">
+                <h2>Psych Seva (2023 - 2024)</h2>
+                <p>Developed an online platform for psychology therapy, allowing users to book services easily. Integrated booking systems, designed the user interface, and focused on a supportive user experience, enhancing user satisfaction and streamlining appointment scheduling.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h1>Contact Me</h1>
+        <!-- Updated contact form with all required fields -->
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <!-- Footer (optional, added for completeness) -->
+    <footer>
+        <p>&copy; 2025 Prateek Kumar. All rights reserved.</p>
+    </footer>
 </body>
 </html>
