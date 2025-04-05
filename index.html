@@ -28,23 +28,32 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <!-- Theme toggle button -->
             <button id="theme-toggle">🌙</button>
         </nav>
     </header>
 
     <!-- Home Section -->
     <section id="home" class="hero">
-        <!-- Profile Picture -->
-        <img src="assets/images/profile.jpg" alt="Prateek Kumar" class="profile-pic">
-        <h1 class="animated-text">Hi, I'm <span>Prateek Kumar</span></h1>
-        <p id="typing-text">Passionate Web Developer | Designer | Creator</p>
-        <a href="#projects" class="cta-button">View My Work</a>
+        <video autoplay muted loop id="background-video">
+            <source src="assets/videos/background.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <img src="assets/images/profile.jpg" alt="Prateek Kumar" class="profile-pic">
+            <h1 class="animated-text">Hi, I'm <span>Prateek Kumar</span></h1>
+            <p class="subtitle">Crafting Digital Experiences with Passion and Precision</p>
+            <p id="typing-text">Passionate Web Developer | Creative Designer | Innovative Creator</p>
+            <a href="#projects" class="cta-button">Explore My Work</a>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/prateekkmr3151" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/prateekCodeLab" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <canvas id="particle-canvas"></canvas>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-        <h1>About Me</h1>
+        <h2>About Me</h2>
         <p>I'm a dynamic and innovative Web Developer with a solid foundation in HTML, CSS, JavaScript, and Java. I have hands-on experience in freelance web development, delivering professional and user-friendly websites for small businesses and startups. I’m committed to enhancing user experience and providing effective solutions.</p>
         <h2>Education</h2>
         <p><strong>Ranchi University, 2019</strong><br>Bachelor of Computer Application, GPA: 7.0</p>
@@ -66,7 +75,7 @@
 
     <!-- Projects Section -->
     <section id="projects" class="projects">
-        <h1>My Projects</h1>
+        <h2>My Projects</h2>
         <div class="projects-container">
             <div class="project-card" data-modal="modal1">
                 <h2>Smart Site Maker</h2>
@@ -105,7 +114,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h1>Contact Me</h1>
+        <h2>Contact Me</h2>
         <form id="contact-form">
             <input type="text" name="name" placeholder="Your Name" required>
             <span class="error" id="name-error"></span>
@@ -117,7 +126,6 @@
             <span class="error" id="message-error"></span>
             <button type="submit">Send</button>
         </form>
-        <!-- Social Media Links -->
         <div class="social-links">
             <a href="https://www.linkedin.com/in/prateekkmr3151" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/prateekCodeLab" target="_blank"><i class="fab fa-github"></i></a>

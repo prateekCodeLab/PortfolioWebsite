@@ -1,7 +1,7 @@
 // Preloader
 window.addEventListener("load", function() {
     const preloader = document.getElementById("preloader");
-    preloader.style.display = "none"; // Hide preloader when page is fully loaded
+    preloader.style.display = "none";
 });
 
 // Contact Form Validation
@@ -20,32 +20,27 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         let isValid = true;
 
-        // Reset error messages
         nameError.textContent = "";
         emailError.textContent = "";
         subjectError.textContent = "";
         messageError.textContent = "";
 
-        // Validate name
         if (nameInput.value.trim() === "") {
             nameError.textContent = "Name is required";
             isValid = false;
         }
 
-        // Validate email
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(emailInput.value.trim())) {
             emailError.textContent = "Please enter a valid email";
             isValid = false;
         }
 
-        // Validate subject
         if (subjectInput.value.trim() === "") {
             subjectError.textContent = "Subject is required";
             isValid = false;
         }
 
-        // Validate message
         if (messageInput.value.trim() === "") {
             messageError.textContent = "Message is required";
             isValid = false;
@@ -80,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// Smooth Scrolling Fallback
+// Smooth Scrolling
 document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll(".nav-link");
 
@@ -101,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Active Link Highlighting
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
 
@@ -109,10 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let scrollPosition = window.scrollY + 100;
 
         sections.forEach((section) => {
-            if (
-                scrollPosition >= section.offsetTop &&
-                scrollPosition < section.offsetTop + section.offsetHeight
-            ) {
+            if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
                 navLinks.forEach((link) => {
                     link.classList.remove("active");
                     if (link.getAttribute("href").includes(section.id)) {
@@ -177,20 +169,92 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-// Typing Animation for Hero Text
+// Typing Animation
 document.addEventListener("DOMContentLoaded", function() {
     const textElement = document.getElementById("typing-text");
-    const text = textElement.textContent;
-    textElement.textContent = "";
-    let i = 0;
+    const texts = ["Passionate Web Developer", "Creative Designer", "Innovative Creator"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
     function type() {
-        if (i < text.length) {
-            textElement.textContent += text.charAt(i);
-            i++;
+        const currentText = texts[textIndex];
+        if (!isDeleting && charIndex < currentText.length) {
+            textElement.textContent += currentText.charAt(charIndex);
+            charIndex++;
             setTimeout(type, 100);
+        } else if (isDeleting && charIndex > 0) {
+            textElement.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(type, 50);
+        } else if (!isDeleting && charIndex === currentText.length) {
+            setTimeout(() => { isDeleting = true; type(); }, 1500);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            setTimeout(type, 500);
         }
     }
 
     setTimeout(type, 500);
+});
+
+// Particle Effect
+document.addEventListener("DOMContentLoaded", function() {
+    const canvas = document.getElementById("particle-canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particlesArray = [];
+    const numberOfParticles = 100;
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedY = Math.random() * 1 + 0.5;
+            this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+        }
+
+        update() {
+            this.y -= this.speedY;
+            if (this.y < 0) {
+                this.y = canvas.height;
+                this.x = Math.random() * canvas.width;
+            }
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+        }
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener("resize", function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 });
