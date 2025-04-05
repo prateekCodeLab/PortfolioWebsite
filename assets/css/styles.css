@@ -257,7 +257,7 @@ nav ul li a:hover {
 /* Projects Section */
 .projects {
     max-width: 1000px;
-    margin: 80px auto;
+    margin: 100px auto; /* Increased margin to ensure Home stays in view */
     padding: 40px 20px;
 }
 

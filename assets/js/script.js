@@ -2,6 +2,7 @@
 window.addEventListener("load", function() {
     const preloader = document.getElementById("preloader");
     preloader.style.display = "none";
+    document.getElementById('home').scrollIntoView({ behavior: 'auto' }); // Ensure Home loads first
 });
 
 // Contact Form Validation

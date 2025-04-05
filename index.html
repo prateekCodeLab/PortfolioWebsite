@@ -54,7 +54,9 @@
     <!-- About Section -->
     <section id="about" class="about">
         <h2>About Me</h2>
-        <p>I'm a dynamic and innovative Web Developer with a solid foundation in HTML, CSS, JavaScript, and Java. I have hands-on experience in freelance web development, delivering professional and user-friendly websites for small businesses and startups. I’m committed to enhancing user experience and providing effective solutions.</p>
+        <p>I'm a dynamic and innovative Web Developer with a solid foundation in HTML, CSS, JavaScript, and Java, complemented by hands-on experience in freelance web development. Adept at delivering professional and user-friendly websites for diverse clients, demonstrating proven skills in creating responsive designs and integrating functional web applications. Committed to enhancing user experience and providing effective solutions for small businesses and startups.</p>
+        <h2>Experience</h2>
+        <p><strong>Freelance Web Developer</strong><br>2023 - Present<br>- Developed and maintained websites for small businesses and startups, enhancing their online presence.<br>- Collaborated with clients to understand their requirements and deliver tailored web solutions.<br>- Utilized HTML, CSS, and JavaScript to create responsive, visually appealing, and user-centric web applications.</p>
         <h2>Education</h2>
         <p><strong>Ranchi University, 2019</strong><br>Bachelor of Computer Application, GPA: 7.0</p>
         <p><strong>Ducat India Institute, Delhi, 2023</strong><br>Certification Course Of Java Full Stack</p>
@@ -139,5 +141,12 @@
 
     <!-- Back to Top Button -->
     <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Script to Ensure Home Section Loads First -->
+    <script>
+        window.addEventListener('load', function() {
+            document.getElementById('home').scrollIntoView({ behavior: 'auto' });
+        });
+    </script>
 </body>
 </html>
