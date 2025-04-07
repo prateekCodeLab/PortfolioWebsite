@@ -506,7 +506,8 @@ nav ul li a:hover {
     overflow-y: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; /* Ensure vertical centering */
+    padding: 20px; /* Add padding to prevent edge clipping */
 }
 
 .modal-content {
@@ -516,15 +517,22 @@ nav ul li a:hover {
     max-width: 600px;
     border-radius: 15px;
     position: relative;
-    animation: slideIn 0.5s ease;
+    animation: slideIn 0.5s ease; /* Keep animation but ensure it starts centered */
     backdrop-filter: blur(5px);
     box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
     border: 1px solid #8B5CF6;
+    margin: auto; /* Ensure it centers within the flex container */
 }
 
 @keyframes slideIn {
-    from { transform: translateY(-50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-50px); /* Slide from above */
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0); /* End at current position */
+        opacity: 1;
+    }
 }
 
 .modal-content h2 {
@@ -568,40 +576,132 @@ nav ul li a:hover {
 
 /* Contact Form */
 .contact {
-    max-width: 1000px;
-    margin: 80px auto;
-    padding: 40px 20px;
+    min-height: 80vh;
+    width: 100%;
+    padding: 80px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #2D3748 100%);
+    overflow: hidden;
 }
 
-#contact-form {
-    max-width: 500px;
-    margin: auto;
+.contact-title {
+    font-size: 3em;
+    color: #F87171; /* Red color like in the screenshot */
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(248, 113, 113, 0.7);
+    animation: glow 1.5s ease-in-out infinite alternate;
 }
 
-#contact-form input, #contact-form textarea {
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 90%;
+    gap: 40px;
+}
+
+.contact-info {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #E2E8F0;
+}
+
+.info-item i {
+    margin-right: 10px;
+    color: #F87171;
+    font-size: 1.2em;
+}
+
+.info-item a {
+    color: #8B5CF6;
+    text-decoration: none;
+}
+
+.info-item a:hover {
+    color: #34D399;
+}
+
+.social-icons a {
+    margin-right: 15px;
+    font-size: 1.5em;
+    color: #8B5CF6;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #34D399;
+}
+
+.resume-download {
+    margin-top: 20px;
+}
+
+.resume-download .cta-button {
+    background-color: #8B5CF6;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.resume-download .cta-button:hover {
+    background-color: #34D399;
+    transform: translateY(-3px);
+}
+
+.contact-form {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    border: 1px solid #8B5CF6;
-    background-color: #1E293B;
+    border: 1px solid #4A5568;
+    background-color: #2D3748;
     color: #E2E8F0;
     border-radius: 5px;
     font-size: 1em;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
-#contact-form input:focus, #contact-form textarea:focus {
-    border-color: #34D399;
-    box-shadow: 0 0 10px rgba(52, 211, 153, 0.3);
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #F87171;
     outline: none;
 }
 
-#contact-form textarea {
-    height: 120px;
+.contact-form textarea {
+    height: 150px;
     resize: none;
 }
 
-#contact-form button {
+.submit-button {
     background-color: #8B5CF6;
     color: #fff;
     padding: 12px 20px;
@@ -609,10 +709,11 @@ nav ul li a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-weight: 600;
+    width: 100%;
     transition: background 0.3s ease, transform 0.3s ease;
 }
 
-#contact-form button:hover {
+.submit-button:hover {
     background-color: #34D399;
     transform: translateY(-3px);
 }
@@ -623,6 +724,17 @@ nav ul li a:hover {
     display: block;
     margin-top: -5px;
     margin-bottom: 10px;
+}
+
+/* Particle Animation for Contact */
+#particle-canvas-contact {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Theme Toggle Button */
@@ -706,9 +818,61 @@ nav ul li a:hover {
     color: #1E293B;
 }
 
-.light-mode #contact-form input, .light-mode #contact-form textarea {
+.light-mode .contact {
+    background: linear-gradient(135deg, #F1F5F9 0%, #E5E7EB 50%, #D1D5DB 100%);
+}
+
+.light-mode .contact-title {
+    color: #F87171;
+    text-shadow: 0 0 10px rgba(248, 113, 113, 0.3);
+}
+
+.light-mode .contact-info,
+.light-mode .contact-form {
+    background: rgba(241, 245, 249, 0.9);
+    color: #1E293B;
+}
+
+.light-mode .info-item i {
+    color: #F87171;
+}
+
+.light-mode .info-item a {
+    color: #8B5CF6;
+}
+
+.light-mode .social-icons a {
+    color: #8B5CF6;
+}
+
+.light-mode .resume-download .cta-button {
+    background-color: #8B5CF6;
+    color: #fff;
+}
+
+.light-mode .resume-download .cta-button:hover {
+    background-color: #34D399;
+}
+
+.light-mode .contact-form input,
+.light-mode .contact-form textarea {
     background-color: #E5E7EB;
     color: #1E293B;
+    border-color: #4A5568;
+}
+
+.light-mode .contact-form input:focus,
+.light-mode .contact-form textarea:focus {
+    border-color: #F87171;
+}
+
+.light-mode .submit-button {
+    background-color: #F87171;
+    color: #fff;
+}
+
+.light-mode .submit-button:hover {
+    background-color: #EF4444;
 }
 
 .light-mode .skills-list li {
@@ -906,13 +1070,18 @@ footer {
         height: 200px;
     }
 
-    .contact {
-        max-width: 90%;
-        padding: 30px 15px;
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    #contact-form input, #contact-form textarea {
-        padding: 10px;
+    .contact-info, .contact-form {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .contact-form {
+        margin-top: 30px;
     }
 }
 

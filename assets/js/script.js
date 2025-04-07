@@ -9,12 +9,12 @@ window.addEventListener("load", function() {
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("contact-form");
     const nameInput = form.querySelector('input[name="name"]');
-    const emailInput = form.querySelector('input[name="email"]');
     const subjectInput = form.querySelector('input[name="subject"]');
+    const emailInput = form.querySelector('input[name="email"]');
     const messageInput = form.querySelector('textarea[name="message"]');
     const nameError = document.getElementById("name-error");
-    const emailError = document.getElementById("email-error");
     const subjectError = document.getElementById("subject-error");
+    const emailError = document.getElementById("email-error");
     const messageError = document.getElementById("message-error");
 
     form.addEventListener("submit", function(event) {
@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function() {
         let isValid = true;
 
         nameError.textContent = "";
-        emailError.textContent = "";
         subjectError.textContent = "";
+        emailError.textContent = "";
         messageError.textContent = "";
 
         if (nameInput.value.trim() === "") {
@@ -31,14 +31,14 @@ document.addEventListener("DOMContentLoaded", function() {
             isValid = false;
         }
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(emailInput.value.trim())) {
-            emailError.textContent = "Please enter a valid email";
+        if (subjectInput.value.trim() === "") {
+            subjectError.textContent = "Subject is required";
             isValid = false;
         }
 
-        if (subjectInput.value.trim() === "") {
-            subjectError.textContent = "Subject is required";
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value.trim())) {
+            emailError.textContent = "Please enter a valid email";
             isValid = false;
         }
 
@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const modals = document.querySelectorAll(".modal");
     const closeButtons = document.querySelectorAll(".close");
 
+    // Initialize modals to be hidden
     modals.forEach(modal => {
         modal.style.display = "none";
     });
@@ -134,7 +135,8 @@ document.addEventListener("DOMContentLoaded", function() {
         card.addEventListener("click", function() {
             const modalId = this.getAttribute("data-modal");
             const modal = document.getElementById(modalId);
-            modal.style.display = "block";
+            modal.style.display = "block"; // Show modal
+            modal.scrollTop = 0; // Reset scroll position
         });
     });
 
@@ -280,6 +282,66 @@ window.addEventListener("scroll", function() {
 // Particle Effect for About Section
 document.addEventListener("DOMContentLoaded", function() {
     const canvas = document.getElementById("particle-canvas-about");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particlesArray = [];
+    const numberOfParticles = 100;
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 3 + 1;
+            this.speedX = Math.random() * 2 - 1;
+            this.speedY = Math.random() * 2 - 1;
+            this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
+
+        draw() {
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function init() {
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+        }
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    window.addEventListener("resize", function() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+});
+
+// Particle Effect for Contact Section
+document.addEventListener("DOMContentLoaded", function() {
+    const canvas = document.getElementById("particle-canvas-contact");
     const ctx = canvas.getContext("2d");
 
     canvas.width = window.innerWidth;
