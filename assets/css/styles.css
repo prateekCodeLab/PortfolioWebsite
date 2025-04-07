@@ -78,6 +78,7 @@ nav ul li a:hover {
 }
 
 /* Hero Section */
+
 .hero {
     position: relative;
     min-height: 100vh;
@@ -86,8 +87,11 @@ nav ul li a:hover {
     align-items: center;
     text-align: center;
     padding: 20px;
-    margin-top: 80px;
+    margin-top: 80px; /* Adjusted for fixed nav */
     overflow: hidden;
+    width: 100vw; /* Ensure full viewport width */
+    max-width: 100%; /* Prevent overflow beyond viewport */
+    box-sizing: border-box;
 }
 
 #background-video {
@@ -97,17 +101,38 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -2;
+    z-index: -2; /* Below hero-content */
     opacity: 0.5;
     filter: brightness(0.7);
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2; /* Ensure it stays above background elements */
     padding: 20px;
     background: rgba(15, 23, 42, 0.7);
     border-radius: 15px;
+    max-width: 800px; /* Constrain the width */
+    width: 90%; /* Responsive width */
+    margin: 0 auto; /* Center horizontally */
+    box-sizing: border-box; /* Include padding in width */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center child elements vertically */
+}
+
+.hero-content > * {
+    margin: 0 auto; /* Center all child elements horizontally */
+    max-width: 100%; /* Prevent overflow */
+}
+
+#particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Above video, below hero-content */
 }
 
 .profile-pic {
@@ -187,43 +212,99 @@ nav ul li a:hover {
     to { opacity: 1; }
 }
 
-@keyframes particleAnimation {
-    0% { transform: translateY(0) scale(1); opacity: 0.5; }
-    100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
-}
-
-/* Particle Canvas */
-#particle-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
 /* About Section */
 .about {
+    min-height: 100vh;
     max-width: 1000px;
-    margin: 80px auto;
-    padding: 40px 20px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9));
+}
+
+.about-wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+        "header"
+        "details"
+        "footer";
+    gap: 20px;
+    padding: 20px;
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.about-header {
+    grid-area: header;
+    text-align: center;
+}
+
+.about-details {
+    grid-area: details;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.about-section {
+    flex: 1;
+    min-width: 250px;
+    background: #1E293B;
+    padding: 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+}
+
+.about-footer {
+    grid-area: footer;
+    text-align: center;
 }
 
 .about h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 2em;
     color: #8B5CF6;
+    margin-bottom: 10px;
 }
 
-.about h3 {
-    font-size: 1.8em;
-    margin-top: 30px;
-    color: #34D399;
+.about-highlights {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.about-highlights li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: #E2E8F0;
+}
+
+.about-highlights li:before {
+    content: "•";
+    color: #8B5CF6;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
 .about p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
+    font-size: 1em;
+    line-height: 1.4;
+    margin-bottom: 10px;
 }
 
 .skills-list {
@@ -231,33 +312,35 @@ nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
+    gap: 10px;
+    padding: 0;
 }
 
 .skills-list li {
-    background-color: #1E293B;
-    padding: 10px 20px;
-    border-radius: 50px;
+    background-color: #2D3748;
+    padding: 8px 12px;
+    border: 2px solid #8B5CF6;
+    border-radius: 5px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    transition: transform 0.3s ease, background 0.3s ease;
+    gap: 5px;
+    font-size: 0.9em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .skills-list li:hover {
-    transform: translateY(-5px);
-    background-color: #334155;
+    transform: translateY(-3px);
+    background-color: #4A5568;
 }
 
 .skills-list i {
-    color: #8B5CF6;
+    color: #34D399;
 }
 
 /* Projects Section */
 .projects {
     max-width: 1000px;
-    margin: 100px auto; /* Increased margin to ensure Home stays in view */
+    margin: 80px auto;
     padding: 40px 20px;
 }
 
@@ -489,6 +572,18 @@ nav ul li a:hover {
     background: rgba(241, 245, 249, 0.7);
 }
 
+.light-mode .about-wrapper {
+    background: rgba(229, 231, 235, 0.8);
+}
+
+.light-mode .about-section {
+    background: #FFFFFF;
+}
+
+.light-mode .about-highlights li:before {
+    color: #8B5CF6;
+}
+
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
@@ -541,8 +636,13 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero {
-        margin-top: 80px;
         min-height: 80vh;
+        padding: 15px;
+    }
+
+    .hero-content {
+        width: 95%; /* Slightly wider on smaller screens */
+        padding: 15px;
     }
 
     .hero h1 {
@@ -561,7 +661,6 @@ footer {
     .profile-pic {
         width: 120px;
         height: 120px;
-        margin-bottom: 20px;
     }
 
     nav ul li {
@@ -573,17 +672,32 @@ footer {
     }
 
     .about {
-        max-width: 90%;
-        padding: 30px 15px;
+        min-height: 80vh;
+        padding: 15px;
     }
 
-    .skills-list {
-        gap: 10px;
+    .about-wrapper {
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .about-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-section {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .about h2 {
+        font-size: 1.5em;
     }
 
     .skills-list li {
-        padding: 8px 15px;
-        font-size: 0.9em;
+        width: 100%;
+        justify-content: center;
     }
 
     .projects {

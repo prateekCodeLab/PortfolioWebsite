@@ -2,7 +2,7 @@
 window.addEventListener("load", function() {
     const preloader = document.getElementById("preloader");
     preloader.style.display = "none";
-    document.getElementById('home').scrollIntoView({ behavior: 'auto' }); // Ensure Home loads first
+    document.getElementById('home').scrollIntoView({ behavior: 'auto' });
 });
 
 // Contact Form Validation
@@ -125,6 +125,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const projectCards = document.querySelectorAll(".project-card");
     const modals = document.querySelectorAll(".modal");
     const closeButtons = document.querySelectorAll(".close");
+
+    modals.forEach(modal => {
+        modal.style.display = "none";
+    });
 
     projectCards.forEach(card => {
         card.addEventListener("click", function() {
@@ -258,4 +262,16 @@ document.addEventListener("DOMContentLoaded", function() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     });
+});
+
+// Fade-in Effect for About Section
+window.addEventListener("scroll", function() {
+    const aboutSection = document.getElementById("about");
+    const sectionPosition = aboutSection.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.3;
+
+    if (sectionPosition < screenPosition) {
+        aboutSection.style.opacity = "1";
+        aboutSection.style.transform = "translateY(0)";
+    }
 });

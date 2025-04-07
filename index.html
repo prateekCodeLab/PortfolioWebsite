@@ -53,26 +53,44 @@
 
     <!-- About Section -->
     <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>I'm a dynamic and innovative Web Developer with a solid foundation in HTML, CSS, JavaScript, and Java, complemented by hands-on experience in freelance web development. Adept at delivering professional and user-friendly websites for diverse clients, demonstrating proven skills in creating responsive designs and integrating functional web applications. Committed to enhancing user experience and providing effective solutions for small businesses and startups.</p>
-        <h2>Experience</h2>
-        <p><strong>Freelance Web Developer</strong><br>2023 - Present<br>- Developed and maintained websites for small businesses and startups, enhancing their online presence.<br>- Collaborated with clients to understand their requirements and deliver tailored web solutions.<br>- Utilized HTML, CSS, and JavaScript to create responsive, visually appealing, and user-centric web applications.</p>
-        <h2>Education</h2>
-        <p><strong>Ranchi University, 2019</strong><br>Bachelor of Computer Application, GPA: 7.0</p>
-        <p><strong>Ducat India Institute, Delhi, 2023</strong><br>Certification Course Of Java Full Stack</p>
-        <h2>Skills</h2>
-        <ul class="skills-list">
-            <li><i class="fas fa-code"></i> Web Development (HTML, CSS, JavaScript, Java)</li>
-            <li><i class="fas fa-mobile-alt"></i> Responsive Design & User Experience</li>
-            <li><i class="fas fa-paint-brush"></i> Frontend Development Frameworks</li>
-            <li><i class="fas fa-tools"></i> Website Maintenance & Optimization</li>
-            <li><i class="fas fa-globe"></i> Cross-browser Compatibility</li>
-            <li><i class="fas fa-users"></i> Client Communication & Collaboration</li>
-            <li><i class="fas fa-brain"></i> Problem Solving & Critical Thinking</li>
-            <li><i class="fas fa-eye"></i> Eye for Detail</li>
-        </ul>
-        <h2>Resume</h2>
-        <p><a href="/resume.pdf" target="_blank" class="cta-button">Download My Resume</a></p>
+        <div class="about-wrapper">
+            <div class="about-header">
+                <h2>About Me</h2>
+                <ul class="about-highlights">
+                    <li>Dynamic and innovative Web Developer with a solid foundation in HTML, CSS, JavaScript, and Java.</li>
+                    <li>Adept at delivering professional, user-friendly websites for diverse clients.</li>
+                    <li>Committed to enhancing user experience for small businesses and startups.</li>
+                </ul>
+            </div>
+            <div class="about-details">
+                <div class="about-section">
+                    <h2>Experience</h2>
+                    <p><strong>Freelance Web Developer</strong><br>2023 - Present<br>- Developed websites for small businesses.<br>- Delivered tailored web solutions.<br>- Created responsive, user-centric applications with HTML, CSS, JavaScript.</p>
+                </div>
+                <div class="about-section">
+                    <h2>Education</h2>
+                    <p><strong>Ranchi University, 2019</strong><br>Bachelor of Computer Application, GPA: 7.0</p>
+                    <p><strong>Ducat India Institute, Delhi, 2023</strong><br>Certification Course of Java Full Stack</p>
+                </div>
+                <div class="about-section">
+                    <h2>Skills</h2>
+                    <ul class="skills-list">
+                        <li><i class="fas fa-code"></i> Web Development (HTML, CSS, JavaScript, PHP)</li>
+                        <li><i class="fas fa-mobile-alt"></i> Responsive Design & UX</li>
+                        <li><i class="fas fa-paint-brush"></i> Frontend Frameworks</li>
+                        <li><i class="fas fa-tools"></i> Website Maintenance</li>
+                        <li><i class="fas fa-globe"></i> Cross-browser Compatibility</li>
+                        <li><i class="fas fa-users"></i> Client Collaboration</li>
+                        <li><i class="fas fa-brain"></i> Problem Solving</li>
+                        <li><i class="fas fa-eye"></i> Eye for Detail</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-footer">
+                <h2>Resume</h2>
+                <p><a href="/resume.pdf" target="_blank" class="cta-button">Download My Resume</a></p>
+            </div>
+        </div>
     </section>
 
     <!-- Projects Section -->
@@ -82,12 +100,12 @@
             <div class="project-card" data-modal="modal1">
                 <h2>Smart Site Maker</h2>
                 <img src="assets/images/smart-site-maker.png" alt="Smart Site Maker">
-                <p>Created a professional and user-friendly website for a digital agency using HTML, CSS, and JavaScript.</p>
+                <p>Created a professional website for a digital agency using HTML, CSS, and JavaScript.</p>
             </div>
             <div class="project-card" data-modal="modal2">
                 <h2>Psych Seva</h2>
                 <img src="assets/images/psych-seva.png" alt="Psych Seva">
-                <p>Developed an online platform for psychology therapy, allowing users to book services easily.</p>
+                <p>Developed an online platform for psychology therapy with easy booking.</p>
             </div>
         </div>
     </section>
@@ -98,7 +116,7 @@
             <span class="close">&times;</span>
             <h2>Smart Site Maker</h2>
             <img src="assets/images/smart-site-maker.png" alt="Smart Site Maker">
-            <p>Created a professional and user-friendly website for a digital agency using HTML, CSS, and JavaScript. Designed the layout, implemented frontend technologies, and ensured optimal functionality, resulting in improved client engagement and conversion rates.</p>
+            <p>Created a professional website for a digital agency using HTML, CSS, and JavaScript.</p>
             <a href="https://www.smartsitemaker.com" target="_blank" class="cta-button">Live Demo</a>
             <a href="#" target="_blank" class="cta-button">GitHub</a>
         </div>
@@ -108,7 +126,7 @@
             <span class="close">&times;</span>
             <h2>Psych Seva</h2>
             <img src="assets/images/psych-seva.png" alt="Psych Seva">
-            <p>Developed an online platform for psychology therapy, allowing users to book services easily. Integrated booking systems, designed the user interface, and focused on a supportive user experience, enhancing user satisfaction and streamlining appointment scheduling.</p>
+            <p>Developed an online platform for psychology therapy with easy booking.</p>
             <a href="https://www.psychseva.com" target="_blank" class="cta-button">Live Demo</a>
             <a href="#" target="_blank" class="cta-button">GitHub</a>
         </div>
@@ -141,12 +159,5 @@
 
     <!-- Back to Top Button -->
     <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
-
-    <!-- Script to Ensure Home Section Loads First -->
-    <script>
-        window.addEventListener('load', function() {
-            document.getElementById('home').scrollIntoView({ behavior: 'auto' });
-        });
-    </script>
 </body>
 </html>
