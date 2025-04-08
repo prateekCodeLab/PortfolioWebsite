@@ -1,72 +1,102 @@
-# Prateek Kumar's Personal Portfolio Website
+# Personal Portfolio - Prateek Kumar
 
-Welcome to my personal portfolio website! This project showcases my skills as a web developer and creative designer, featuring a collection of my work, a contact form, and a downloadable resume.
+Welcome to my personal portfolio website! This project showcases my skills, experience, and projects as a passionate web developer and creative designer. Built with modern web technologies, it features a dynamic, responsive design with multiple themes, interactive elements, and a sleek user experience.
 
-## Project Overview
-- **Technologies Used**: HTML, CSS, JavaScript
-- **Difficulty Level**: Intermediate
-- **Purpose**: To create a dynamic and responsive portfolio to highlight my projects, skills, and contact information.
+## Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Themes](#themes)
+- [Contact](#contact)
+
+## Overview
+This portfolio serves as a digital resume and showcase of my work. It includes sections for my bio, experience, education, skills, projects, and a contact form. The design is enhanced with animations, a theme switcher, and a Matrix-style background effect, reflecting my passion for both functionality and aesthetics.
 
 ## Features
-- **Home Page**: A visually appealing landing page with a video background, particle animations, and a typing effect introducing myself.
-- **About Page**: A timeline-based section detailing my experience, education, and skills with fade-in animations.
-- **Projects Page**: A gallery of my projects with clickable cards that open modals for more details, including live demos and GitHub links.
-- **Contact Page**: A contact form with validation, contact information, social links, and a resume download option.
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices using media queries and flexible layouts.
-- **Interactivity**: Includes hover effects, smooth scrolling, theme toggling (light/dark mode), and a "Back to Top" button.
-- **Additional Features**: Particle animations, typing animation, and project modals enhance the user experience.
+- **Responsive Design**: Optimized for desktops, tablets, and mobile devices.
+- **Theme Switcher**: Eight customizable themes (Dark, Light, Neon, Violet, Cyan, Emerald, Sunset, Midnight) with animated gradient backgrounds.
+- **Interactive Elements**:
+  - Smooth scrolling navigation with active link highlighting.
+  - Typing animation in the hero section.
+  - Project modals with live demo and GitHub links.
+  - Back-to-top button for easy navigation.
+- **Animations**:
+  - Preloader with a spinning loader.
+  - Fade-in and slide-in effects for section visibility.
+  - Matrix rain background animation.
+- **Contact Form**: Client-side validation for name, subject, email, and message fields.
+- **Accessibility**: ARIA labels and focus states for improved usability.
 
-## How to Navigate
-1. **Navigation Menu**: Use the fixed navigation bar at the top to jump to the Home, About, Projects, and Contact sections.
-   - Click any link (e.g., "About") to smoothly scroll to the corresponding section.
-   - The active section is highlighted in the navigation bar.
-2. **Project Exploration**: Click on any project card in the Projects section to view a modal with more details, including live demos and GitHub links.
-3. **Theme Toggle**: Click the moon/sun icon in the top-right corner to switch between dark and light themes. The preference is saved in local storage.
-4. **Back to Top**: Scroll down and click the arrow-up button in the bottom-right corner to return to the top of the page.
-5. **Contact Form**: Fill out the form in the Contact section and submit it (currently shows an alert; backend integration can be added for email functionality).
-6. **Resume Download**: Click the "Download My Resume" button to access my resume in a new tab.
+## Technologies Used
+- **HTML5**: Semantic structure and content.
+- **CSS3**: Styling with CSS variables, animations, and responsive layouts.
+- **JavaScript**: Dynamic functionality, DOM manipulation, and canvas-based Matrix animation.
+- **Font Awesome**: Icons for social links and skills.
+- **Google Fonts**: Poppins font for typography.
+- **External Libraries**:
+  - Font Awesome CDN for icons.
+  - Google Fonts for typography.
 
-## Setup Instructions
-1. **Clone the Repository**:
-   - `git clone https://github.com/prateekCodeLab/portfolio.git`
-2. **Install Dependencies**:
-   - No additional dependencies are required as Font Awesome and Google Fonts are loaded via CDN.
-3. **Run Locally**:
-   - Open `index.html` in a web browser.
-   - Ensure the `assets` folder (containing `css`, `js`, `images`, `videos`, and `files`) is intact.
-4. **Host Online**:
-   - Upload the files to a web hosting platform (e.g., GitHub Pages, Netlify) for public access.
-
-## File Structure
+## Project Structure
+```
 portfolio/
-├── index.html
 ├── assets/
 │   ├── css/
-│   │   └── styles.css
+│   │   └── styles.css        # Main stylesheet with themes and animations
 │   ├── js/
-│   │   └── script.js
+│   │   └── script.js         # JavaScript for interactivity and animations
 │   ├── images/
-│   │   ├── profile.jpg
-│   │   ├── smart-site-maker.png
-│   │   ├── psych-seva.png
-│   │   └── new-project.png
-│   ├── videos/
-│   │   └── background.mp4
-│   └── files/
-│       └── resume.pdf
-├── README.md
+│   │   ├── favicon.png       # Favicon for the site
+│   │   ├── profile.jpg       # Profile picture
+│   │   ├── smart-site-maker.png  # Project screenshot
+│   │   ├── library.png       # Project screenshot
+│   │   └── myportfolio.png   # Project screenshot
+│   └── resume.pdf            # Resume file (not included in repo)
+├── index.html                # Main HTML file
+└── README.md                 # Project documentation
+```
 
+## Installation
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/prateekCodeLab/PortfolioWebsite.git
+   ```
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd PortfolioWebsite
+   ```
+3. **Open the Project**:
+   - Open `index.html` in a web browser (e.g., Chrome, Firefox) to view the portfolio locally.
+   - No additional dependencies or server setup is required since it’s a static site.
 
-## Additional Notes
-- **Resume**: The resume is linked as `resume.pdf` in the `assets/files/` directory. Ensure it is updated with the latest information.
-- **Improvements**: Consider adding backend integration for the contact form (e.g., EmailJS) or a project slider for more interactivity.
-- **License**: This project is for personal use. Feel free to fork and modify, but please give credit.
+## Usage
+- **Navigation**: Use the top navigation bar to jump to Home, About, Projects, or Contact sections.
+- **Theme Switching**: Click the theme toggle button (e.g., 🌙) in the top-right corner to cycle through themes.
+- **Projects**: Click on project cards to open modals with detailed information and links.
+- **Contact**: Fill out the form to send a message (currently displays a success alert; backend integration pending).
+- **Resume**: Download the resume via the link in the Contact section.
+
+## Themes
+The portfolio includes eight distinct themes, each with unique gradient backgrounds and accent colors:
+1. **Dark** (🌙): Slate-blue gradient with purple accents.
+2. **Light** (🌞): Soft gray gradient with green accents.
+3. **Neon** (✨): Dark blue gradient with neon green text and accents.
+4. **Violet** (🌸): Purple gradient with violet text and accents.
+5. **Cyan** (💧): Teal gradient with cyan text and accents.
+6. **Emerald** (🍃): Green gradient with deep teal accents.
+7. **Sunset** (🌅): Warm orange-purple gradient with orange accents.
+8. **Midnight** (🌠): Deep blue gradient with light blue accents.
+
+Themes persist across sessions using `localStorage`.
 
 ## Contact
+- **Name**: Prateek Kumar
 - **Email**: [prateekkmr3151@gmail.com](mailto:prateekkmr3151@gmail.com)
-- **Website**: [Coming Soon]
-- **Social Media**:
-  - [LinkedIn](https://www.linkedin.com/in/prateekkmr3151)
-  - [GitHub](https://github.com/prateekCodeLab)
+- **LinkedIn**: [linkedin.com/in/prateekkmr3151](https://www.linkedin.com/in/prateekkmr3151)
+- **GitHub**: [github.com/prateekCodeLab](https://github.com/prateekCodeLab)
+- **Location**: New Delhi, India
 
-Thank you for visiting my portfolio!
+© 2025 Prateek Kumar. All rights reserved.
