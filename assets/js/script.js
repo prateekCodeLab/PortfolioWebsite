@@ -34,11 +34,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
     const themes = [
-        { name: "dark", bg: "linear-gradient(135deg, #0D1B2A 0%, #1B263B 50%, #415A77 100%)", color: "#E0E1DD", icon: "🌙", accent: "#6B4E99" },
-        { name: "light", bg: "linear-gradient(135deg, #F4F7F7 0%, #D3E0EA 50%, #B2C9CC 100%)", color: "#0D1B2A", icon: "🌞", accent: "#52796F" },
+        { name: "dark", bg: "linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #475569 100%)", color: "#F5F6F5", icon: "🌙", accent: "#7C3AED" },
+        { name: "light", bg: "linear-gradient(135deg, #F9FAFB 0%, #E5E7EB 50%, #D1D5DB 100%)", color: "#2D3748", icon: "🌞", accent: "#059669" },
         { name: "neon", bg: "linear-gradient(135deg, #0A0E14 0%, #1A2A44 50%, #2E5077 100%)", color: "#00FFAA", icon: "✨", accent: "#00FFAA" },
         { name: "violet", bg: "linear-gradient(135deg, #2A1F5E 0%, #3D2C6B 50%, #6B4E99 100%)", color: "#D4A4EB", icon: "🌸", accent: "#D4A4EB" },
-        { name: "cyan", bg: "linear-gradient(135deg, #0D2E3A 0%, #1D4D6A 50%, #43A8A8 100%)", color: "#A3E4D7", icon: "💧", accent: "#43A8A8" }
+        { name: "cyan", bg: "linear-gradient(135deg, #0D2E3A 0%, #1D4D6A 50%, #43A8A8 100%)", color: "#A3E4D7", icon: "💧", accent: "#43A8A8" },
+        { name: "emerald", bg: "linear-gradient(135deg, #022C22 0%, #064E3B 50%, #10B981 100%)", color: "#ECFDF5", icon: "🍃", accent: "#10B981" },
+        { name: "sunset", bg: "linear-gradient(135deg, #7C2D12 0%, #EA580C 50%, #A21CAF 100%)", color: "#1F2937", icon: "🌅", accent: "#F97316" },
+        { name: "midnight", bg: "linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4C1D95 100%)", color: "#E2E8F0", icon: "🌠", accent: "#60A5FA" }
     ];
     let currentThemeIndex = 0;
     if (localStorage.getItem("theme")) {
@@ -72,14 +75,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-
     // Active Link Highlighting
     const sections = document.querySelectorAll("section");
     const navLinksArray = document.querySelectorAll(".nav-link");
     function changeActiveLink() {
-        let scrollPosition = window.scrollY + 60; // Match nav height
+        let scrollPosition = window.scrollY + 60;
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 60; // Offset for fixed nav
+            const sectionTop = section.offsetTop - 60;
             const sectionBottom = sectionTop + section.offsetHeight;
             if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                 navLinksArray.forEach(link => {
@@ -94,8 +96,6 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener("scroll", changeActiveLink);
     changeActiveLink();
 
-
-
     // Project Modals
     const projectCards = document.querySelectorAll(".project-card");
     const modals = document.querySelectorAll(".modal");
@@ -105,7 +105,8 @@ document.addEventListener("DOMContentLoaded", function() {
         card.addEventListener("click", function() {
             const modalId = this.getAttribute("data-modal");
             const modal = document.getElementById(modalId);
-            modal.style.display = "block"; modal.scrollTop = 0;
+            modal.style.display = "block";
+            modal.scrollTop = 0;
         });
     });
     closeButtons.forEach(button => {
@@ -141,14 +142,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     setTimeout(type, 500);
 
-    // Fade-in Effect for About Section
+    // Fade-in and Slide-in Effects for Sections
     window.addEventListener("scroll", function() {
         const timelineItems = document.querySelectorAll(".timeline-item");
+        const sectionTitles = document.querySelectorAll(".about-title, .projects-title, .contact-title");
         const screenPosition = window.innerHeight / 1.3;
-        timelineItems.forEach(item => { if (item.getBoundingClientRect().top < screenPosition) item.classList.add("active"); });
+
+        timelineItems.forEach(item => {
+            if (item.getBoundingClientRect().top < screenPosition) item.classList.add("active");
+        });
+
+        sectionTitles.forEach(title => {
+            if (title.getBoundingClientRect().top < screenPosition) title.classList.add("visible");
+        });
     });
 
-    // Matrix Rain Animation (Global across all sections)
+    // Matrix Rain Animation
     const canvas = document.createElement("canvas");
     canvas.id = "matrix-canvas";
     document.body.appendChild(canvas);
