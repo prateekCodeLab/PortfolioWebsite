@@ -18,7 +18,6 @@
     <div id="preloader">
         <div class="spinner"></div>
     </div>
-
     <!-- Header with Navigation -->
     <header>
         <nav>
@@ -28,15 +27,13 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button id="theme-toggle">🌙</button>
+            <div id="theme-switcher" class="theme-switcher">
+                <button id="theme-toggle">🌙</button>
+            </div>
         </nav>
     </header>
-
     <!-- Home Section -->
     <section id="home" class="hero">
-        <video autoplay muted loop id="background-video">
-            <source src="assets/videos/background.mp4" type="video/mp4">
-        </video>
         <div class="hero-content">
             <img src="assets/images/profile.jpg" alt="Prateek Kumar" class="profile-pic">
             <h1 class="animated-text">Hi, I'm <span>Prateek Kumar</span></h1>
@@ -48,55 +45,51 @@
                 <a href="https://github.com/prateekCodeLab" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>
-        <canvas id="particle-canvas"></canvas>
     </section>
-
     <!-- About Section -->
     <section id="about" class="about">
-    <div class="about-container">
-        <h2 class="about-title">About Me</h2>
-        <div class="about-timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>About Me</h3>
-                    <p>I am Prateek Kumar, a passionate web developer and creative designer with a focus on crafting digital experiences that are both functional and aesthetically pleasing.</p>
+        <div class="about-container">
+            <h2 class="about-title">About Me</h2>
+            <div class="about-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>About Me</h3>
+                        <p>I am Prateek Kumar, a passionate web developer and creative designer with a focus on crafting digital experiences that are both functional and aesthetically pleasing.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Experience</h3>
-                    <p><strong>Freelance Web Developer</strong><br>2023-Present<br>- Designed and developed custom websites for various clients.<br>- Ensured responsiveness and user-friendliness using HTML, CSS, JavaScript.<br>- Collaborated with clients to deliver high-quality, tailored solutions.</p>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Experience</h3>
+                        <p><strong>Freelance Web Developer</strong><br>2023-Present<br>- Designed and developed custom websites for various clients.<br>- Ensured responsiveness and user-friendliness using HTML, CSS, JavaScript.<br>- Collaborated with clients to deliver high-quality, tailored solutions.</p>
+                    </div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Education</h3>
-                    <p><strong>Ranchi Uni, 2019</strong><br>BCA, 7.0 GPA</p>
-                    <p><strong>Ducat India, 2023</strong><br>Java Full Stack</p>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Education</h3>
+                        <p><strong>Ranchi University, 2019</strong><br>BCA, 7.0 GPA</p>
+                        <p><strong>Ducat India, 2023</strong><br>Java Full Stack</p>
+                    </div>
                 </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Skills</h3>
-                    <ul class="skills-list">
-                        <li><i class="fab fa-html5"></i> HTML5</li>
-                        <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                        <li><i class="fab fa-js-square"></i> JavaScript</li>
-                        <li><i class="fab fa-react"></i> React</li>
-                        <li><i class="fab fa-node-js"></i> Node.js</li>
-                        <li><i class="fab fa-git-alt"></i> Git</li>
-                    </ul>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Skills</h3>
+                        <ul class="skills-list">
+                            <li><i class="fab fa-html5"></i> HTML5</li>
+                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                            <li><i class="fab fa-js-square"></i> JavaScript</li>
+                            <li><i class="fab fa-react"></i> React</li>
+                            <li><i class="fab fa-node-js"></i> Node.js</li>
+                            <li><i class="fab fa-git-alt"></i> Git</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-        <canvas id="particle-canvas-about"></canvas>
     </section>
-
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="projects-container">
@@ -128,7 +121,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-modal="modal3">
-                    <img src="assets/images/new-project.png" alt="Portfolio Site" loading="lazy">
+                    <img src="assets/images/myportfolio.png" alt="Portfolio Site" loading="lazy">
                     <div class="card-content">
                         <h3>Portfolio Site</h3>
                         <p>Designed and developed this personal portfolio to showcase my skills and projects.</p>
@@ -166,14 +159,13 @@
             <div class="modal-content">
                 <span class="close">×</span>
                 <h2>Portfolio Site</h2>
-                <img src="assets/images/new-project.png" alt="Portfolio Site" loading="lazy">
-                <p>This personal portfolio showcases my web development skills, built with HTML, CSS, and JavaScript, featuring a responsive design and particle animations.</p>
+                <img src="assets/images/myportfolio.png" alt="Portfolio Site" loading="lazy">
+                <p>This personal portfolio showcases my web development skills, built with HTML, CSS, and JavaScript, featuring a matrix rain animation.</p>
                 <a href="#" target="_blank" class="cta-button">Live Demo</a>
-                <a href="https://github.com/prateekCodeLab/portfolio" target="_blank" class="cta-button">GitHub</a>
+                <a href="https://github.com/prateekCodeLab/PortfolioWebsite" target="_blank" class="cta-button">GitHub</a>
             </div>
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2 class="contact-title">Contact Me!</h2>
@@ -192,7 +184,6 @@
                     <a href="https://github.com/prateekCodeLab" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
-                <!-- Resume Download -->
                 <div class="resume-download">
                     <a href="/resume.pdf" target="_blank" class="cta-button">
                         <i class="fas fa-download"></i> Download My Resume
@@ -211,14 +202,11 @@
                 <button type="submit" class="submit-button">Submit</button>
             </form>
         </div>
-        <canvas id="particle-canvas-contact"></canvas>
     </section>
-
     <!-- Footer -->
     <footer>
         <p>© 2025 Prateek Kumar. All rights reserved.</p>
     </footer>
-
     <!-- Back to Top Button -->
     <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
 </body>

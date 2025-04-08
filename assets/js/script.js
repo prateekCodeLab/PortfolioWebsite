@@ -5,8 +5,9 @@ window.addEventListener("load", function() {
     document.getElementById('home').scrollIntoView({ behavior: 'auto' });
 });
 
-// Contact Form Validation
+// Single DOMContentLoaded listener for all initialization
 document.addEventListener("DOMContentLoaded", function() {
+    // Contact Form Validation
     const form = document.getElementById("contact-form");
     const nameInput = form.querySelector('input[name="name"]');
     const subjectInput = form.querySelector('input[name="subject"]');
@@ -20,381 +21,196 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         let isValid = true;
-
-        nameError.textContent = "";
-        subjectError.textContent = "";
-        emailError.textContent = "";
-        messageError.textContent = "";
-
-        if (nameInput.value.trim() === "") {
-            nameError.textContent = "Name is required";
-            isValid = false;
-        }
-
-        if (subjectInput.value.trim() === "") {
-            subjectError.textContent = "Subject is required";
-            isValid = false;
-        }
-
+        nameError.textContent = ""; subjectError.textContent = ""; emailError.textContent = ""; messageError.textContent = "";
+        if (nameInput.value.trim() === "") { nameError.textContent = "Name is required"; isValid = false; }
+        if (subjectInput.value.trim() === "") { subjectError.textContent = "Subject is required"; isValid = false; }
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(emailInput.value.trim())) {
-            emailError.textContent = "Please enter a valid email";
-            isValid = false;
-        }
-
-        if (messageInput.value.trim() === "") {
-            messageError.textContent = "Message is required";
-            isValid = false;
-        }
-
-        if (isValid) {
-            alert("Your message has been sent!");
-            form.reset();
-        }
+        if (!emailPattern.test(emailInput.value.trim())) { emailError.textContent = "Please enter a valid email"; isValid = false; }
+        if (messageInput.value.trim() === "") { messageError.textContent = "Message is required"; isValid = false; }
+        if (isValid) { alert("Your message has been sent!"); form.reset(); }
     });
-});
 
-// Theme Switcher
-document.addEventListener("DOMContentLoaded", function() {
+    // Theme Switcher
     const toggleButton = document.getElementById("theme-toggle");
     const body = document.body;
-
-    if (localStorage.getItem("theme") === "light") {
-        body.classList.add("light-mode");
-        toggleButton.textContent = "🌞";
+    const themes = [
+        { name: "dark", bg: "linear-gradient(135deg, #0D1B2A 0%, #1B263B 50%, #415A77 100%)", color: "#E0E1DD", icon: "🌙", accent: "#6B4E99" },
+        { name: "light", bg: "linear-gradient(135deg, #F4F7F7 0%, #D3E0EA 50%, #B2C9CC 100%)", color: "#0D1B2A", icon: "🌞", accent: "#52796F" },
+        { name: "neon", bg: "linear-gradient(135deg, #0A0E14 0%, #1A2A44 50%, #2E5077 100%)", color: "#00FFAA", icon: "✨", accent: "#00FFAA" },
+        { name: "violet", bg: "linear-gradient(135deg, #2A1F5E 0%, #3D2C6B 50%, #6B4E99 100%)", color: "#D4A4EB", icon: "🌸", accent: "#D4A4EB" },
+        { name: "cyan", bg: "linear-gradient(135deg, #0D2E3A 0%, #1D4D6A 50%, #43A8A8 100%)", color: "#A3E4D7", icon: "💧", accent: "#43A8A8" }
+    ];
+    let currentThemeIndex = 0;
+    if (localStorage.getItem("theme")) {
+        currentThemeIndex = themes.findIndex(t => t.name === localStorage.getItem("theme"));
     }
+    applyTheme(currentThemeIndex);
 
     toggleButton.addEventListener("click", function() {
-        body.classList.toggle("light-mode");
-        if (body.classList.contains("light-mode")) {
-            localStorage.setItem("theme", "light");
-            toggleButton.textContent = "🌞";
-        } else {
-            localStorage.setItem("theme", "dark");
-            toggleButton.textContent = "🌙";
-        }
+        currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+        applyTheme(currentThemeIndex);
     });
-});
 
-// Smooth Scrolling
-document.addEventListener("DOMContentLoaded", function() {
+    function applyTheme(index) {
+        const theme = themes[index];
+        body.style.background = theme.bg;
+        body.style.color = theme.color;
+        body.className = `${theme.name}-mode`;
+        localStorage.setItem("theme", theme.name);
+        toggleButton.textContent = theme.icon;
+        document.documentElement.style.setProperty('--accent-color', theme.accent);
+    }
+
+    // Smooth Scrolling
     const navLinks = document.querySelectorAll(".nav-link");
-
     navLinks.forEach(link => {
         link.addEventListener("click", function(event) {
             event.preventDefault();
             const targetId = this.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
-
-            if (targetSection) {
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
-                    behavior: "smooth"
-                });
-            }
+            if (targetSection) window.scrollTo({ top: targetSection.offsetTop - 80, behavior: "smooth" });
         });
     });
-});
 
-// Active Link Highlighting
-document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
+    // // Active Link Highlighting
+    // const sections = document.querySelectorAll("section");
+    // const navLinksArray = document.querySelectorAll(".nav-link");
+    // function changeActiveLink() {
+    //     let scrollPosition = window.scrollY + 100;
+    //     sections.forEach(section => {
+    //         if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
+    //             navLinksArray.forEach(link => {
+    //                 link.classList.remove("active");
+    //                 if (link.getAttribute("href").includes(section.id)) link.classList.add("active");
+    //             });
+    //         }
+    //     });
+    // }
+    // window.addEventListener("scroll", changeActiveLink);
+    // changeActiveLink();
 
-    function changeActiveLink() {
-        let scrollPosition = window.scrollY + 100;
+    // Active Link Highlighting
+const sections = document.querySelectorAll("section");
+const navLinksArray = document.querySelectorAll(".nav-link");
+function changeActiveLink() {
+    let scrollPosition = window.scrollY + 60; // Match nav height
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 60; // Offset for fixed nav
+        const sectionBottom = sectionTop + section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            navLinksArray.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${section.id}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
+    });
+}
+window.addEventListener("scroll", changeActiveLink);
+changeActiveLink();
 
-        sections.forEach((section) => {
-            if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
-                navLinks.forEach((link) => {
-                    link.classList.remove("active");
-                    if (link.getAttribute("href").includes(section.id)) {
-                        link.classList.add("active");
-                    }
-                });
-            }
-        });
-    }
 
-    window.addEventListener("scroll", changeActiveLink);
-    changeActiveLink();
-});
 
-// Project Modals
-document.addEventListener("DOMContentLoaded", function() {
+    // Project Modals
     const projectCards = document.querySelectorAll(".project-card");
     const modals = document.querySelectorAll(".modal");
     const closeButtons = document.querySelectorAll(".close");
-
-    // Initialize modals to be hidden
-    modals.forEach(modal => {
-        modal.style.display = "none";
-    });
-
+    modals.forEach(modal => { modal.style.display = "none"; });
     projectCards.forEach(card => {
         card.addEventListener("click", function() {
             const modalId = this.getAttribute("data-modal");
             const modal = document.getElementById(modalId);
-            modal.style.display = "block"; // Show modal
-            modal.scrollTop = 0; // Reset scroll position
+            modal.style.display = "block"; modal.scrollTop = 0;
         });
     });
-
     closeButtons.forEach(button => {
         button.addEventListener("click", function() {
             const modal = this.closest(".modal");
             modal.style.display = "none";
         });
     });
-
     window.addEventListener("click", function(event) {
-        modals.forEach(modal => {
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        });
+        modals.forEach(modal => { if (event.target === modal) modal.style.display = "none"; });
     });
-});
 
-// Back to Top Button
-document.addEventListener("DOMContentLoaded", function() {
+    // Back to Top Button
     const backToTopButton = document.getElementById("back-to-top");
-
     window.addEventListener("scroll", function() {
-        if (window.scrollY > 300) {
-            backToTopButton.style.display = "flex";
-        } else {
-            backToTopButton.style.display = "none";
-        }
+        if (window.scrollY > 300) backToTopButton.style.display = "block";
+        else backToTopButton.style.display = "none";
     });
-
     backToTopButton.addEventListener("click", function() {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
-});
 
-// Typing Animation
-document.addEventListener("DOMContentLoaded", function() {
+    // Typing Animation
     const textElement = document.getElementById("typing-text");
     const texts = ["Passionate Web Developer", "Creative Designer", "Innovative Creator"];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
+    let textIndex = 0, charIndex = 0, isDeleting = false;
     function type() {
         const currentText = texts[textIndex];
-        if (!isDeleting && charIndex < currentText.length) {
-            textElement.textContent += currentText.charAt(charIndex);
-            charIndex++;
-            setTimeout(type, 100);
-        } else if (isDeleting && charIndex > 0) {
-            textElement.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(type, 50);
-        } else if (!isDeleting && charIndex === currentText.length) {
-            setTimeout(() => { isDeleting = true; type(); }, 1500);
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            setTimeout(type, 500);
-        }
+        if (!isDeleting && charIndex < currentText.length) { textElement.textContent += currentText.charAt(charIndex); charIndex++; setTimeout(type, 100); }
+        else if (isDeleting && charIndex > 0) { textElement.textContent = currentText.substring(0, charIndex - 1); charIndex--; setTimeout(type, 50); }
+        else if (!isDeleting && charIndex === currentText.length) setTimeout(() => { isDeleting = true; type(); }, 1500);
+        else if (isDeleting && charIndex === 0) { isDeleting = false; textIndex = (textIndex + 1) % texts.length; setTimeout(type, 500); }
     }
-
     setTimeout(type, 500);
-});
 
-// Particle Effect (Hero Section)
-document.addEventListener("DOMContentLoaded", function() {
-    const canvas = document.getElementById("particle-canvas");
+    // Fade-in Effect for About Section
+    window.addEventListener("scroll", function() {
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        const screenPosition = window.innerHeight / 1.3;
+        timelineItems.forEach(item => { if (item.getBoundingClientRect().top < screenPosition) item.classList.add("active"); });
+    });
+
+    // Matrix Rain Animation (Global across all sections)
+    const canvas = document.createElement("canvas");
+    canvas.id = "matrix-canvas";
+    document.body.appendChild(canvas);
     const ctx = canvas.getContext("2d");
 
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const particlesArray = [];
-    const numberOfParticles = 100;
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = [];
 
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedY = Math.random() * 1 + 0.5;
-            this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
-        }
+    for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
+    }
 
-        update() {
-            this.y -= this.speedY;
-            if (this.y < 0) {
-                this.y = canvas.height;
-                this.x = Math.random() * canvas.width;
+    function draw() {
+        ctx.fillStyle = "rgba(13, 27, 42, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#43A8A8";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
             }
-        }
-
-        draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    function init() {
-        for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
+            drops[i]++;
         }
     }
 
     function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-            particlesArray[i].draw();
-        }
+        draw();
         requestAnimationFrame(animate);
     }
-
-    init();
     animate();
 
-    window.addEventListener("resize", function() {
+    window.addEventListener("resize", () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-    });
-});
-
-// Fade-in Effect for About Section
-window.addEventListener("scroll", function() {
-    const timelineItems = document.querySelectorAll(".timeline-item");
-    const screenPosition = window.innerHeight / 1.3;
-
-    timelineItems.forEach(item => {
-        const itemPosition = item.getBoundingClientRect().top;
-        if (itemPosition < screenPosition) {
-            item.classList.add("active");
+        const columns = canvas.width / fontSize;
+        drops.length = columns;
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
         }
-    });
-});
-
-// Particle Effect for About Section
-document.addEventListener("DOMContentLoaded", function() {
-    const canvas = document.getElementById("particle-canvas-about");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particlesArray = [];
-    const numberOfParticles = 100;
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = Math.random() * 2 - 1;
-            this.speedY = Math.random() * 2 - 1;
-            this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-        }
-
-        draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    function init() {
-        for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-            particlesArray[i].draw();
-        }
-        requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    window.addEventListener("resize", function() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-});
-
-// Particle Effect for Contact Section
-document.addEventListener("DOMContentLoaded", function() {
-    const canvas = document.getElementById("particle-canvas-contact");
-    const ctx = canvas.getContext("2d");
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particlesArray = [];
-    const numberOfParticles = 100;
-
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 3 + 1;
-            this.speedX = Math.random() * 2 - 1;
-            this.speedY = Math.random() * 2 - 1;
-            this.color = `hsl(${Math.random() * 360}, 70%, 50%)`;
-        }
-
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-        }
-
-        draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    function init() {
-        for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-            particlesArray[i].update();
-            particlesArray[i].draw();
-        }
-        requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-
-    window.addEventListener("resize", function() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
     });
 });
