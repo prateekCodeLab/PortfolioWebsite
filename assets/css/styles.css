@@ -15,21 +15,21 @@ body {
 
 /* CSS Variables for Themes */
 :root {
-    /* Dark Theme (Default) */
-    --dark-bg: linear-gradient(135deg, #0D1B2A 0%, #1B263B 50%, #415A77 100%);
-    --dark-text: #E0E1DD;
-    --dark-accent: #6B4E99;
-    --dark-accent-hover: #84A98C;
-    --dark-bg-secondary: rgba(27, 38, 59, 0.9);
-    --dark-bg-overlay: rgba(13, 27, 42, 0.7);
+    /* Refined Dark Theme */
+    --dark-bg: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #475569 100%);
+    --dark-text: #F5F6F5;
+    --dark-accent: #7C3AED;
+    --dark-accent-hover: #A5B4FC;
+    --dark-bg-secondary: rgba(30, 41, 59, 0.85);
+    --dark-bg-overlay: rgba(15, 23, 42, 0.65);
 
-    /* Light Theme */
-    --light-bg: linear-gradient(135deg, #F4F7F7 0%, #D3E0EA 50%, #B2C9CC 100%);
-    --light-text: #0D1B2A;
-    --light-accent: #52796F;
-    --light-accent-hover: #84A98C;
-    --light-bg-secondary: rgba(244, 247, 247, 0.95);
-    --light-bg-overlay: rgba(244, 247, 247, 0.8);
+    /* Refined Light Theme */
+    --light-bg: linear-gradient(135deg, #F9FAFB 0%, #E5E7EB 50%, #D1D5DB 100%);
+    --light-text: #2D3748;
+    --light-accent: #059669;
+    --light-accent-hover: #34D399;
+    --light-bg-secondary: rgba(249, 250, 251, 0.9);
+    --light-bg-overlay: rgba(229, 231, 235, 0.75);
 
     /* Neon Theme */
     --neon-bg: linear-gradient(135deg, #0A0E14 0%, #1A2A44 50%, #2E5077 100%);
@@ -133,7 +133,7 @@ body.cyan-mode {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #0D1B2A;
+    background: #0F172A;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,10 +149,9 @@ body.cyan-mode {
     animation: spin 1s linear infinite;
 }
 
-
 /* Navigation */
 nav {
-    background: rgba(13, 27, 42, 0.95);
+    background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(10px);
     padding: 10px 20px;
     position: fixed;
@@ -164,7 +163,7 @@ nav {
     transition: background 0.5s ease;
 }
 
-body.light-mode nav { background: rgba(244, 247, 247, 0.95); }
+body.light-mode nav { background: rgba(249, 250, 251, 0.95); }
 
 nav ul {
     list-style: none;
@@ -216,8 +215,12 @@ nav ul li a.active {
 
 #theme-toggle:hover {
     transform: scale(1.2);
-    background: rgba(132, 169, 140, 0.2);
+    background: rgba(165, 180, 252, 0.2);
     color: var(--accent-hover);
+}
+
+body.light-mode #theme-toggle:hover {
+    background: rgba(52, 211, 153, 0.2);
 }
 
 /* Hero Section */
@@ -266,10 +269,12 @@ nav ul li a.active {
 
 .subtitle {
     font-size: 1.05em;
-    color: #A3BFFA;
+    color: #93C5FD;
     margin-bottom: 8px;
     animation: fadeIn 2s ease-in-out forwards;
 }
+
+body.light-mode .subtitle { color: #4B5EAA; }
 
 #typing-text {
     font-size: 1.15em;
@@ -278,6 +283,8 @@ nav ul li a.active {
     max-width: 500px;
     animation: fadeIn 1.5s ease-out;
 }
+
+body.light-mode #typing-text { color: #4A5568; }
 
 .cta-button {
     background: var(--accent-color);
@@ -414,6 +421,7 @@ nav ul li a.active {
 }
 
 .timeline-content p { font-size: 0.9em; color: #BFCDE0; line-height: 1.5; }
+body.light-mode .timeline-content p { color: #4A5568; }
 
 .skills-list {
     list-style: none;
@@ -424,7 +432,7 @@ nav ul li a.active {
 }
 
 .skills-list li {
-    background: #1B263B;
+    background: #1E293B;
     padding: 6px 10px;
     border: 2px solid var(--accent-color);
     border-radius: 5px;
@@ -436,10 +444,14 @@ nav ul li a.active {
     animation: fadeIn 1s ease-out;
 }
 
+body.light-mode .skills-list li { background: #E5E7EB; }
+
 .skills-list li:hover {
     transform: translateY(-3px);
-    background: #415A77;
+    background: #475569;
 }
+
+body.light-mode .skills-list li:hover { background: #D1D5DB; }
 
 .skills-list i { color: var(--accent-hover); }
 
@@ -510,6 +522,7 @@ nav ul li a.active {
 }
 
 .card-content p { font-size: 0.9em; color: #BFCDE0; line-height: 1.5; margin-bottom: 8px; }
+body.light-mode .card-content p { color: #4A5568; }
 
 .tags {
     display: flex;
@@ -519,11 +532,13 @@ nav ul li a.active {
 }
 
 .tags span {
-    background: #1B263B;
+    background: #1E293B;
     padding: 4px 8px;
     border-radius: 5px;
     font-size: 0.8em;
 }
+
+body.light-mode .tags span { background: #E5E7EB; }
 
 /* Modal */
 .modal {
@@ -539,6 +554,7 @@ nav ul li a.active {
     justify-content: center;
     align-items: center;
     padding: 20px;
+    flex-direction: column;
 }
 
 .modal-content {
@@ -551,6 +567,8 @@ nav ul li a.active {
     backdrop-filter: blur(5px);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--accent-color);
+    position: relative;
+    margin: auto;
 }
 
 .modal-content h2 {
@@ -568,6 +586,7 @@ nav ul li a.active {
 }
 
 .modal-content p { font-size: 1em; color: #BFCDE0; margin-bottom: 20px; }
+body.light-mode .modal-content p { color: #4A5568; }
 
 .modal-content .cta-button { margin: 10px; display: inline-block; }
 
@@ -650,12 +669,19 @@ nav ul li a.active {
     width: 100%;
     padding: 10px;
     margin: 8px 0;
-    border: 1px solid #415A77;
-    background: #1B263B;
+    border: 1px solid #475569;
+    background: #1E293B;
     color: var(--dark-text);
     border-radius: 5px;
     font-size: 1em;
     transition: border-color 0.3s ease;
+}
+
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea {
+    border: 1px solid #D1D5DB;
+    background: #E5E7EB;
+    color: var(--light-text);
 }
 
 .contact-form input:focus, .contact-form textarea:focus {
@@ -683,7 +709,7 @@ nav ul li a.active {
 }
 
 .error {
-    color: #FF6F61;
+    color: #F87171;
     font-size: 0.9em;
     display: block;
     margin-top: -5px;
@@ -694,14 +720,14 @@ nav ul li a.active {
 footer {
     text-align: center;
     padding: 15px 0;
-    background: #1B263B;
+    background: #1E293B;
     width: 100%;
     position: relative;
     z-index: 2;
     animation: fadeIn 1.5s ease-out;
 }
 
-body.light-mode footer { background: #D3E0EA; }
+body.light-mode footer { background: #D1D5DB; }
 
 /* Back to Top */
 #back-to-top {

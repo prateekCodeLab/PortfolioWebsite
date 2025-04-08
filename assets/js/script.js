@@ -72,43 +72,27 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // // Active Link Highlighting
-    // const sections = document.querySelectorAll("section");
-    // const navLinksArray = document.querySelectorAll(".nav-link");
-    // function changeActiveLink() {
-    //     let scrollPosition = window.scrollY + 100;
-    //     sections.forEach(section => {
-    //         if (scrollPosition >= section.offsetTop && scrollPosition < section.offsetTop + section.offsetHeight) {
-    //             navLinksArray.forEach(link => {
-    //                 link.classList.remove("active");
-    //                 if (link.getAttribute("href").includes(section.id)) link.classList.add("active");
-    //             });
-    //         }
-    //     });
-    // }
-    // window.addEventListener("scroll", changeActiveLink);
-    // changeActiveLink();
 
     // Active Link Highlighting
-const sections = document.querySelectorAll("section");
-const navLinksArray = document.querySelectorAll(".nav-link");
-function changeActiveLink() {
-    let scrollPosition = window.scrollY + 60; // Match nav height
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 60; // Offset for fixed nav
-        const sectionBottom = sectionTop + section.offsetHeight;
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            navLinksArray.forEach(link => {
-                link.classList.remove("active");
-                if (link.getAttribute("href") === `#${section.id}`) {
-                    link.classList.add("active");
-                }
-            });
-        }
-    });
-}
-window.addEventListener("scroll", changeActiveLink);
-changeActiveLink();
+    const sections = document.querySelectorAll("section");
+    const navLinksArray = document.querySelectorAll(".nav-link");
+    function changeActiveLink() {
+        let scrollPosition = window.scrollY + 60; // Match nav height
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 60; // Offset for fixed nav
+            const sectionBottom = sectionTop + section.offsetHeight;
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                navLinksArray.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${section.id}`) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    }
+    window.addEventListener("scroll", changeActiveLink);
+    changeActiveLink();
 
 
 
