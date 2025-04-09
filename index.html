@@ -6,51 +6,82 @@
     <title>Personal Portfolio - Prateek Kumar</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/script.js" defer></script>
+    <!-- Add EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <!-- Initialize EmailJS with Public Key -->
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("XxIc518YyK643FLW7");
+        })();
+    </script>
+    <!-- Import Poppins font from Google Fonts for typography -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Include Font Awesome for icons like social media and skills -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Set favicon for the browser tab icon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
+    <!-- Preloader shown while page loads -->
     <div id="preloader">
+        <!-- Spinner animation for loading effect -->
         <div class="spinner"></div>
     </div>
+
+    <!-- Header with navigation bar -->
     <header>
         <nav>
+            <!-- Navigation list for page sections -->
             <ul>
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <!-- Theme switcher container -->
             <div id="theme-switcher" class="theme-switcher">
+                <!-- Button to toggle between themes -->
                 <button id="theme-toggle" aria-label="Switch theme">🌙</button>
             </div>
         </nav>
     </header>
+
+    <!-- Hero section for introduction -->
     <section id="home" class="hero">
         <div class="hero-content">
+            <!-- Profile picture with animation -->
             <img src="assets/images/profile.jpg" alt="Prateek Kumar's profile picture" class="profile-pic">
+            <!-- Main greeting with animated text -->
             <h1 class="animated-text">Hi, I'm <span>Prateek Kumar</span></h1>
+            <!-- Subtitle describing my focus -->
             <p class="subtitle">Crafting Digital Experiences with Passion and Precision</p>
+            <!-- Dynamic typing text for roles -->
             <p id="typing-text">Passionate Web Developer | Creative Designer | Innovative Creator</p>
+            <!-- Call-to-action button to view projects -->
             <a href="#projects" class="cta-button">Explore My Work</a>
+            <!-- Social media links -->
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/prateekkmr3151" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/prateekCodeLab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
+
+    <!-- About section with timeline -->
     <section id="about" class="about">
         <div class="about-container">
+            <!-- Section title -->
             <h2 class="about-title">About Me</h2>
             <div class="about-timeline">
+                <!-- Timeline item for personal intro -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h3>About Me</h3>
+                        <h3>Who I Am</h3>
                         <p>I am Prateek Kumar, a passionate web developer and creative designer with a focus on crafting digital experiences that are both functional and aesthetically pleasing.</p>
                     </div>
                 </div>
+                <!-- Timeline item for experience -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -58,6 +89,7 @@
                         <p><strong>Freelance Web Developer</strong><br>2023-Present<br>- Designed and developed custom websites for various clients.<br>- Ensured responsiveness and user-friendliness using HTML, CSS, JavaScript.<br>- Collaborated with clients to deliver high-quality, tailored solutions.</p>
                     </div>
                 </div>
+                <!-- Timeline item for education -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -66,6 +98,7 @@
                         <p><strong>Ducat India, 2023</strong><br>Java Full Stack</p>
                     </div>
                 </div>
+                <!-- Timeline item for skills -->
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
@@ -83,10 +116,14 @@
             </div>
         </div>
     </section>
+
+    <!-- Projects section with grid and modals -->
     <section id="projects" class="projects">
         <div class="projects-container">
+            <!-- Section title -->
             <h2 class="projects-title">My Projects</h2>
             <div class="projects-grid">
+                <!-- Project card 1 -->
                 <div class="project-card" data-modal="modal1">
                     <img src="assets/images/smart-site-maker.png" alt="Screenshot of Smart Site Maker website showcasing a modern agency layout" loading="lazy">
                     <div class="card-content">
@@ -100,6 +137,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Project card 2 -->
                 <div class="project-card" data-modal="modal2">
                     <img src="assets/images/library.png" alt="Screenshot of Library Management System interface for managing book data" loading="lazy">
                     <div class="card-content">
@@ -113,6 +151,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Project card 3 -->
                 <div class="project-card" data-modal="modal3">
                     <img src="assets/images/myportfolio.png" alt="Screenshot of personal portfolio site highlighting skills and projects" loading="lazy">
                     <div class="card-content">
@@ -127,6 +166,7 @@
                 </div>
             </div>
         </div>
+        <!-- Modal for Project 1 -->
         <div id="modal1" class="modal" role="dialog" aria-labelledby="modal1-title">
             <div class="modal-content">
                 <span class="close" aria-label="Close modal">×</span>
@@ -137,6 +177,7 @@
                 <a href="https://github.com/prateekCodeLab/smart-site-maker" target="_blank" class="cta-button">GitHub</a>
             </div>
         </div>
+        <!-- Modal for Project 2 -->
         <div id="modal2" class="modal" role="dialog" aria-labelledby="modal2-title">
             <div class="modal-content">
                 <span class="close" aria-label="Close modal">×</span>
@@ -147,6 +188,7 @@
                 <a href="https://github.com/prateekCodeLab/LibraryManagementSystem" target="_blank" class="cta-button">GitHub</a>
             </div>
         </div>
+        <!-- Modal for Project 3 -->
         <div id="modal3" class="modal" role="dialog" aria-labelledby="modal3-title">
             <div class="modal-content">
                 <span class="close" aria-label="Close modal">×</span>
@@ -158,9 +200,13 @@
             </div>
         </div>
     </section>
+
+    <!-- Contact section with info and form -->
     <section id="contact" class="contact">
+        <!-- Section title -->
         <h2 class="contact-title">Contact Me!</h2>
         <div class="contact-container">
+            <!-- Contact information -->
             <div class="contact-info">
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
@@ -176,11 +222,12 @@
                     <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
                 <div class="resume-download">
-                    <a href="/resume.pdf" target="_blank" class="cta-button">
+                    <a href="assets/resume.pdf" target="_blank" class="cta-button">
                         <i class="fas fa-download"></i> Download My Resume
                     </a>
                 </div>
             </div>
+            <!-- Contact form -->
             <form id="contact-form" class="contact-form">
                 <input type="text" name="name" placeholder="Name" required>
                 <span class="error" id="name-error"></span>
@@ -194,9 +241,13 @@
             </form>
         </div>
     </section>
+
+    <!-- Footer with copyright -->
     <footer>
         <p>© 2025 Prateek Kumar. All rights reserved.</p>
     </footer>
+
+    <!-- Back-to-top button -->
     <button id="back-to-top" title="Back to Top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
 </body>
 </html>
