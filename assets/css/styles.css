@@ -390,19 +390,21 @@ body.sunset-mode .cta-button:hover { background: linear-gradient(to right, #F973
 .about-timeline::before {
     content: '';
     position: absolute;
-    left: 20px; /* Adjusted for mobile alignment */
+    left: 50%;
     top: 0;
     bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, var(--accent-color), var(--accent-hover));
-    transform: translateX(-50%);
+    /* Updated: Precise centering */
+    transform: translateX(calc(-50% - 1px));
 }
 
 .timeline-item {
     margin: 20px 0;
     display: flex;
-    justify-content: flex-start; /* Adjusted for mobile stack */
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -413,7 +415,6 @@ body.sunset-mode .cta-button:hover { background: linear-gradient(to right, #F973
     transform: translateY(0);
 }
 
-/* New: Ensure timeline dot stays aligned on mobile */
 .timeline-dot {
     width: 16px;
     height: 16px;
@@ -421,14 +422,14 @@ body.sunset-mode .cta-button:hover { background: linear-gradient(to right, #F973
     border: 3px solid var(--accent-hover);
     border-radius: 50%;
     position: absolute;
-    left: 10px;
-    top: 0;
-    transform: translateY(-50%);
+    left: 50%;
+    top: -8px;
+    transform: translateX(-50%);
     transition: var(--transition-base);
 }
 
 .timeline-item:hover .timeline-dot {
-    transform: translateY(-50%) scale(1.3);
+    transform: translateX(-50%) scale(1.3);
     box-shadow: 0 0 15px rgba(107, 78, 153, 0.8);
 }
 
@@ -436,11 +437,19 @@ body.sunset-mode .cta-button:hover { background: linear-gradient(to right, #F973
     background: var(--bg-secondary);
     padding: 15px;
     border-radius: 10px;
-    width: 85%; /* Adjusted for mobile readability */
+    width: 100%;
     max-width: 400px;
-    margin-left: 30px; /* Offset for dot */
+    margin-top: 15px;
     transition: var(--transition-base);
     backdrop-filter: blur(5px);
+}
+
+.timeline-item:nth-child(odd) .timeline-content { transform: translateX(-60%); }
+.timeline-item:nth-child(even) .timeline-content { transform: translateX(60%); }
+
+.timeline-item:hover .timeline-content {
+    transform: translateX(0);
+    box-shadow: var(--shadow-md);
 }
 
 .timeline-content h3 {

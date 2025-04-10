@@ -60,6 +60,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const icon = burgerMenu.querySelector("i");
             icon.classList.toggle("fa-bars");
             icon.classList.toggle("fa-times");
+            // Smooth animation for menu
+            if (navLinksContainer.classList.contains("active")) {
+                navLinksContainer.style.transform = "translateY(0)";
+            } else {
+                navLinksContainer.style.transform = "translateY(-100%)";
+            }
         }
     };
 
