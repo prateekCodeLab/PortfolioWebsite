@@ -1,253 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags for Character Encoding and Responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Portfolio - Prateek Kumar</title>
+    <!-- Styles and Scripts -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <script src="assets/js/script.js" defer></script>
-    <!-- Add EmailJS SDK -->
+    <!-- EmailJS Integration -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <!-- Initialize EmailJS with Public Key -->
     <script type="text/javascript">
-        (function() {
-            emailjs.init("XxIc518YyK643FLW7");
-        })();
+        (function() { emailjs.init("XxIc518YyK643FLW7"); })();
     </script>
-    <!-- Import Poppins font from Google Fonts for typography -->
+    <!-- Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Include Font Awesome for icons like social media and skills -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Set favicon for the browser tab icon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
-    <!-- Preloader shown while page loads -->
+    <!-- Preloader -->
     <div id="preloader">
-        <!-- Spinner animation for loading effect -->
         <div class="spinner"></div>
     </div>
 
-    <!-- Header with navigation bar -->
+    <!-- Header with Navigation -->
     <header>
         <nav>
-            <!-- Navigation list for page sections -->
-            <ul>
+            <!-- Burger Menu for Mobile -->
+            <div class="burger-menu" id="burger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <!-- Navigation Links -->
+            <ul id="nav-links" class="nav-links">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <!-- Theme switcher container -->
+            <!-- Theme Switcher -->
             <div id="theme-switcher" class="theme-switcher">
-                <!-- Button to toggle between themes -->
                 <button id="theme-toggle" aria-label="Switch theme">🌙</button>
             </div>
         </nav>
     </header>
 
-    <!-- Hero section for introduction -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <!-- Profile picture with animation -->
-            <img src="assets/images/profile.jpg" alt="Prateek Kumar's profile picture" class="profile-pic">
-            <!-- Main greeting with animated text -->
-            <h1 class="animated-text">Hi, I'm <span>Prateek Kumar</span></h1>
-            <!-- Subtitle describing my focus -->
-            <p class="subtitle">Crafting Digital Experiences with Passion and Precision</p>
-            <!-- Dynamic typing text for roles -->
-            <p id="typing-text">Passionate Web Developer | Creative Designer | Innovative Creator</p>
-            <!-- Call-to-action button to view projects -->
-            <a href="#projects" class="cta-button">Explore My Work</a>
-            <!-- Social media links -->
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/prateekkmr3151" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/prateekCodeLab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About section with timeline -->
-    <section id="about" class="about">
-        <div class="about-container">
-            <!-- Section title -->
-            <h2 class="about-title">About Me</h2>
-            <div class="about-timeline">
-                <!-- Timeline item for personal intro -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Who I Am</h3>
-                        <p>I am Prateek Kumar, a passionate web developer and creative designer with a focus on crafting digital experiences that are both functional and aesthetically pleasing.</p>
-                    </div>
-                </div>
-                <!-- Timeline item for experience -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Experience</h3>
-                        <p><strong>Freelance Web Developer</strong><br>2023-Present<br>- Designed and developed custom websites for various clients.<br>- Ensured responsiveness and user-friendliness using HTML, CSS, JavaScript.<br>- Collaborated with clients to deliver high-quality, tailored solutions.</p>
-                    </div>
-                </div>
-                <!-- Timeline item for education -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Education</h3>
-                        <p><strong>Ranchi University, 2019</strong><br>BCA, 7.0 GPA</p>
-                        <p><strong>Ducat India, 2023</strong><br>Java Full Stack</p>
-                    </div>
-                </div>
-                <!-- Timeline item for skills -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Skills</h3>
-                        <ul class="skills-list">
-                            <li><i class="fab fa-html5"></i> HTML5</li>
-                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                            <li><i class="fab fa-js-square"></i> JavaScript</li>
-                            <li><i class="fab fa-react"></i> React</li>
-                            <li><i class="fab fa-node-js"></i> Node.js</li>
-                            <li><i class="fab fa-git-alt"></i> Git</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects section with grid and modals -->
-    <section id="projects" class="projects">
-        <div class="projects-container">
-            <!-- Section title -->
-            <h2 class="projects-title">My Projects</h2>
-            <div class="projects-grid">
-                <!-- Project card 1 -->
-                <div class="project-card" data-modal="modal1">
-                    <img src="assets/images/smart-site-maker.png" alt="Screenshot of Smart Site Maker website showcasing a modern agency layout" loading="lazy">
-                    <div class="card-content">
-                        <h3>Smart Site Maker</h3>
-                        <p>Created a professional website for a digital agency using modern front-end technologies.</p>
-                        <div class="tags">
-                            <span>Web Development</span>
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project card 2 -->
-                <div class="project-card" data-modal="modal2">
-                    <img src="assets/images/library.png" alt="Screenshot of Library Management System interface for managing book data" loading="lazy">
-                    <div class="card-content">
-                        <h3>Library Management System</h3>
-                        <p>Built an online platform for managing books data at Library Management System.</p>
-                        <div class="tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>PHP</span>
-                            <span>MYSQL</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project card 3 -->
-                <div class="project-card" data-modal="modal3">
-                    <img src="assets/images/myportfolio.png" alt="Screenshot of personal portfolio site highlighting skills and projects" loading="lazy">
-                    <div class="card-content">
-                        <h3>Portfolio Site</h3>
-                        <p>Designed and developed this personal portfolio to showcase my skills and projects.</p>
-                        <div class="tags">
-                            <span>UI/UX</span>
-                            <span>Front-end</span>
-                            <span>JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal for Project 1 -->
-        <div id="modal1" class="modal" role="dialog" aria-labelledby="modal1-title">
-            <div class="modal-content">
-                <span class="close" aria-label="Close modal">×</span>
-                <h2 id="modal1-title">Smart Site Maker</h2>
-                <img src="assets/images/smart-site-maker.png" alt="Detailed view of Smart Site Maker website" loading="lazy">
-                <p>A professional website built for a digital agency, featuring responsive design and interactive elements using HTML5, CSS3, and JavaScript.</p>
-                <a href="https://www.smartsitemaker.com" target="_blank" class="cta-button">Live Demo</a>
-                <a href="https://github.com/prateekCodeLab/smart-site-maker" target="_blank" class="cta-button">GitHub</a>
-            </div>
-        </div>
-        <!-- Modal for Project 2 -->
-        <div id="modal2" class="modal" role="dialog" aria-labelledby="modal2-title">
-            <div class="modal-content">
-                <span class="close" aria-label="Close modal">×</span>
-                <h2 id="modal2-title">Library Management System</h2>
-                <img src="assets/images/library.png" alt="Detailed view of Library Management System interface" loading="lazy">
-                <p>An online platform for managing book data, developed using HTML, CSS, PHP, and MySQL.</p>
-                <a href="https://indilibrary.free.nf" target="_blank" class="cta-button">Live Demo</a>
-                <a href="https://github.com/prateekCodeLab/LibraryManagementSystem" target="_blank" class="cta-button">GitHub</a>
-            </div>
-        </div>
-        <!-- Modal for Project 3 -->
-        <div id="modal3" class="modal" role="dialog" aria-labelledby="modal3-title">
-            <div class="modal-content">
-                <span class="close" aria-label="Close modal">×</span>
-                <h2 id="modal3-title">Portfolio Site</h2>
-                <img src="assets/images/myportfolio.png" alt="Detailed view of personal portfolio site" loading="lazy">
-                <p>This personal portfolio showcases my web development skills, built with HTML, CSS, and JavaScript, featuring a matrix rain animation.</p>
-                <a href="#" target="_blank" class="cta-button">Live Demo</a>
-                <a href="https://github.com/prateekCodeLab/PortfolioWebsite" target="_blank" class="cta-button">GitHub</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact section with info and form -->
-    <section id="contact" class="contact">
-        <!-- Section title -->
-        <h2 class="contact-title">Contact Me!</h2>
-        <div class="contact-container">
-            <!-- Contact information -->
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email: <a href="mailto:prateekkmr3151@gmail.com">prateekkmr3151@gmail.com</a></span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Location: New Delhi, India</span>
-                </div>
-                <div class="info-item social-icons">
+    <!-- Main Content Wrapper -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <img src="assets/images/profile.jpg" alt="Prateek Kumar's profile picture" class="profile-pic">
+                <h1 class="animated-text">Hi, I'm <span>Prateek Kumar</span></h1>
+                <p class="subtitle">Crafting Digital Experiences with Passion and Precision</p>
+                <p id="typing-text">Passionate Web Developer | Creative Designer | Innovative Creator</p>
+                <a href="#projects" class="cta-button">Explore My Work</a>
+                <div class="social-icons">
                     <a href="https://www.linkedin.com/in/prateekkmr3151" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://github.com/prateekCodeLab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                </div>
-                <div class="resume-download">
-                    <a href="assets/resume.pdf" target="_blank" class="cta-button">
-                        <i class="fas fa-download"></i> Download My Resume
-                    </a>
                 </div>
             </div>
-            <!-- Contact form -->
-            <form id="contact-form" class="contact-form">
-                <input type="text" name="name" placeholder="Name" required>
-                <span class="error" id="name-error"></span>
-                <input type="text" name="subject" placeholder="Subject" required>
-                <span class="error" id="subject-error"></span>
-                <input type="email" name="email" placeholder="Email" required>
-                <span class="error" id="email-error"></span>
-                <textarea name="message" placeholder="Message" required></textarea>
-                <span class="error" id="message-error"></span>
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer with copyright -->
+        <!-- About Section -->
+        <article id="about" class="about">
+            <div class="about-container">
+                <h2 class="about-title">About Me</h2>
+                <div class="about-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Who I Am</h3>
+                            <p>I am Prateek Kumar, a passionate web developer and creative designer with a focus on crafting digital experiences that are both functional and aesthetically pleasing.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Experience</h3>
+                            <p><strong>Freelance Web Developer</strong><br>2023-Present<br>- Designed and developed custom websites for various clients.<br>- Ensured responsiveness and user-friendliness using HTML, CSS, JavaScript.<br>- Collaborated with clients to deliver high-quality, tailored solutions.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Education</h3>
+                            <p><strong>Ranchi University, 2019</strong><br>BCA, 7.0 GPA</p>
+                            <p><strong>Ducat India, 2023</strong><br>Java Full Stack</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Skills</h3>
+                            <ul class="skills-list">
+                                <li><i class="fab fa-html5"></i> HTML5</li>
+                                <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                                <li><i class="fab fa-js-square"></i> JavaScript</li>
+                                <li><i class="fab fa-react"></i> React</li>
+                                <li><i class="fab fa-node-js"></i> Node.js</li>
+                                <li><i class="fab fa-git-alt"></i> Git</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Projects Section -->
+        <article id="projects" class="projects">
+            <div class="projects-container">
+                <h2 class="projects-title">My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card" data-modal="modal1">
+                        <img src="assets/images/smart-site-maker.png" alt="Screenshot of Smart Site Maker website showcasing a modern agency layout" loading="lazy">
+                        <div class="card-content">
+                            <h3>Smart Site Maker</h3>
+                            <p>Created a professional website for a digital agency using modern front-end technologies.</p>
+                            <div class="tags">
+                                <span>Web Development</span>
+                                <span>HTML5</span>
+                                <span>CSS3</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-modal="modal2">
+                        <img src="assets/images/library.png" alt="Screenshot of Library Management System interface for managing book data" loading="lazy">
+                        <div class="card-content">
+                            <h3>Library Management System</h3>
+                            <p>Built an online platform for managing books data at Library Management System.</p>
+                            <div class="tags">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>PHP</span>
+                                <span>MYSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card" data-modal="modal3">
+                        <img src="assets/images/myportfolio.png" alt="Screenshot of personal portfolio site highlighting skills and projects" loading="lazy">
+                        <div class="card-content">
+                            <h3>Portfolio Site</h3>
+                            <p>Designed and developed this personal portfolio to showcase my skills and projects.</p>
+                            <div class="tags">
+                                <span>UI/UX</span>
+                                <span>Front-end</span>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Modals -->
+            <div id="modal1" class="modal" role="dialog" aria-labelledby="modal1-title">
+                <div class="modal-content">
+                    <span class="close" aria-label="Close modal">×</span>
+                    <h2 id="modal1-title">Smart Site Maker</h2>
+                    <img src="assets/images/smart-site-maker.png" alt="Detailed view of Smart Site Maker website" loading="lazy">
+                    <p>A professional website built for a digital agency, featuring responsive design and interactive elements using HTML5, CSS3, and JavaScript.</p>
+                    <a href="https://www.smartsitemaker.com" target="_blank" class="cta-button">Live Demo</a>
+                    <a href="https://github.com/prateekCodeLab/smart-site-maker" target="_blank" class="cta-button">GitHub</a>
+                </div>
+            </div>
+            <div id="modal2" class="modal" role="dialog" aria-labelledby="modal2-title">
+                <div class="modal-content">
+                    <span class="close" aria-label="Close modal">×</span>
+                    <h2 id="modal2-title">Library Management System</h2>
+                    <img src="assets/images/library.png" alt="Detailed view of Library Management System interface" loading="lazy">
+                    <p>An online platform for managing book data, developed using HTML, CSS, PHP, and MySQL.</p>
+                    <a href="https://indilibrary.free.nf" target="_blank" class="cta-button">Live Demo</a>
+                    <a href="https://github.com/prateekCodeLab/LibraryManagementSystem" target="_blank" class="cta-button">GitHub</a>
+                </div>
+            </div>
+            <div id="modal3" class="modal" role="dialog" aria-labelledby="modal3-title">
+                <div class="modal-content">
+                    <span class="close" aria-label="Close modal">×</span>
+                    <h2 id="modal3-title">Portfolio Site</h2>
+                    <img src="assets/images/myportfolio.png" alt="Detailed view of personal portfolio site" loading="lazy">
+                    <p>This personal portfolio showcases my web development skills, built with HTML, CSS, and JavaScript, featuring a matrix rain animation.</p>
+                    <a href="#" target="_blank" class="cta-button">Live Demo</a>
+                    <a href="https://github.com/prateekCodeLab/PortfolioWebsite" target="_blank" class="cta-button">GitHub</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Contact Section -->
+        <aside id="contact" class="contact">
+            <h2 class="contact-title">Contact Me!</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: <a href="/cdn-cgi/l/email-protection#19292b382d3c3c3232342b6a686c68193e34383035773a3634"><span class="__cf_email__" data-cfemail="413133203524242a2a2c337270747001262c20282d6f222e2c">[email&#160;protected]</span></a></span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Location: New Delhi, India</span>
+                    </div>
+                    <div class="info-item social-icons">
+                        <a href="https://www.linkedin.com/in/prateekkmr3151" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/prateekCodeLab" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="resume-download">
+                        <a href="assets/resume.pdf" target="_blank" class="cta-button">
+                            <i class="fas fa-download"></i> Download My Resume
+                        </a>
+                    </div>
+                </div>
+                <form id="contact-form" class="contact-form">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <span class="error" id="name-error"></span>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <span class="error" id="subject-error"></span>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <span class="error" id="email-error"></span>
+                    <textarea name="message" placeholder="Message" required></textarea>
+                    <span class="error" id="message-error"></span>
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
     <footer>
         <p>© 2025 Prateek Kumar. All rights reserved.</p>
     </footer>
 
-    <!-- Back-to-top button -->
+    <!-- Back-to-Top Button -->
     <button id="back-to-top" title="Back to Top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92d957e6abf6bcb4',t:'MTc0NDE5NDc3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92d9b61b3daab0af',t:'MTc0NDE5ODYzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
