@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
         function toggleMobileMenu() {
             navLinksContainer.classList.toggle("active");
             burgerMenu.classList.toggle("active");
-            // Updated: Toggle between bars and X icon
+            // Toggle between bars and X icon
             const icon = burgerMenu.querySelector("i");
             icon.classList.toggle("fa-bars");
             icon.classList.toggle("fa-times");
@@ -189,6 +189,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     // Typing Animation Module
+    // Optimized for mobile with adjustable speed
     const initTyping = () => {
         const textElement = $("#typing-text");
         const texts = ["Passionate Web Developer", "Creative Designer", "Innovative Creator"];
@@ -196,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function type() {
             const currentText = texts[textIndex];
-            const typeSpeed = window.innerWidth < 768 ? 150 : 100; /* Updated: Slower on mobile */
+            const typeSpeed = window.innerWidth < 768 ? 150 : 100; // Slower on mobile for readability
             if (!isDeleting && charIndex < currentText.length) {
                 textElement.textContent += currentText.charAt(charIndex);
                 charIndex++;
